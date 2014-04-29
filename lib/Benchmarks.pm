@@ -63,8 +63,8 @@ NOTE that C<Benchmarks> exports *ALL* functions from C<Benchmark>. You can use C
 
     timethis (-1, sub { bless +{}, 'Foo' } );
 
-More information about functions: L<https://metacpan.org/pod/Benchmark#Standard-Exports> and L<https://metacpan.org/pod/Benchmark#Optional-Exports
->
+More information about functions: L<https://metacpan.org/pod/Benchmark#Standard-Exports> and L<https://metacpan.org/pod/Benchmark#Optional-Exports>
+
 
 =head1 REPOSITORY
 
