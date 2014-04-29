@@ -1,7 +1,7 @@
 package Benchmarks;
 use strict;
 use warnings;
-use Benchmark qw/:all/;
+use Benchmark qw//;
 
 our $VERSION = '0.01';
 
@@ -11,7 +11,7 @@ sub import {
     Benchmark->export_to_level(1, $class, ':all');
 
     if ($code && ref $code eq 'CODE') {
-        cmpthese( timethese( $count || -1, $code->() ) );
+        Benchmark::cmpthese( Benchmark::timethese( $count || -1, $code->() ) );
     }
 }
 
