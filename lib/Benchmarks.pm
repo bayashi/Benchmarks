@@ -13,7 +13,11 @@ sub import {
     $style ||= 'auto'; # default
 
     if ($code && ref $code eq 'CODE') {
-        Benchmark::cmpthese( Benchmark::timethese( $count || -1, $code->(), $style ), $style );
+        Benchmark::cmpthese(
+            $count || -1,
+            $code->(),
+            $style,
+        );
     }
 }
 
