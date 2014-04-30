@@ -6,12 +6,14 @@ use Benchmark qw//;
 our $VERSION = '0.02';
 
 sub import {
-    my ($class, $code, $count) = @_;
+    my ($class, $code, $count, $style) = @_;
 
     Benchmark->export_to_level(1, $class, ':all');
 
+    $style ||= 'auto'; # default
+
     if ($code && ref $code eq 'CODE') {
-        Benchmark::cmpthese( Benchmark::timethese( $count || -1, $code->() ) );
+        Benchmark::cmpthese( Benchmark::timethese( $count || -1, $code->(), $style ), $style );
     }
 }
 
