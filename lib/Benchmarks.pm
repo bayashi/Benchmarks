@@ -10,13 +10,11 @@ sub import {
 
     Benchmark->export_to_level(1, $class, ':all');
 
-    $style ||= 'auto'; # default
-
     if ($code && ref $code eq 'CODE') {
         Benchmark::cmpthese(
-            $count || -1,
+            !defined $count ? -1 : $count,
             $code->(),
-            $style,
+            $style || 'auto',
         );
     }
 }
