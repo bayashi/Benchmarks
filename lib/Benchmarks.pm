@@ -6,16 +6,22 @@ use Benchmark qw//;
 our $VERSION = '0.02';
 
 sub import {
-    my ($class, $code, $count, $style) = @_;
+    my ($class, $code, $count, $style, $title) = @_;
 
     Benchmark->export_to_level(1, $class, ':all');
 
-    if ($code && ref $code eq 'CODE') {
-        Benchmark::cmpthese(
-            !defined $count ? -1 : $count,
-            $code->(),
-            $style || 'auto',
-        );
+    return unless $code;
+    return unless ref $code eq 'CODE';
+
+    my $ret   = $code->();
+    $count = !defined($count) ? -1 : $count;
+    $style ||= 'auto';
+
+    if ( !ref $ret || ref $ret eq 'CODE' ) {
+        Benchmark::timethis($count, $ret, $title || undef, $style);
+    }
+    else {
+        Benchmark::cmpthese($count, $ret, $style);
     }
 }
 
@@ -61,7 +67,22 @@ Then the comparison will be invoked and show the result like below.
     times 4051316/s    --  -54%
     raise 8895180/s  120%    --
 
-NOTE that C<Benchmarks> exports *ALL* functions from C<Benchmark>. You can use C<Benchmarks> module as same as Benchmark module.
+=head2 PURE BENCHMARK
+
+B<Benchmarks> can show a pure benchmark(NOT to compare) like below.
+
+    use Benchmarks sub {
+        my $x = 2;
+        sub { $x * $x * $x * $x }; # only one code
+    };
+
+then the result like this.
+
+    timethis for 1:  1 wallclock secs ( 1.07 usr +  0.00 sys =  1.07 CPU) @ 4164904.67/s (n=4456448)
+
+=head2 MORE FUNCTIONS
+
+C<Benchmarks> exports *ALL* functions from C<Benchmark>. You can use C<Benchmarks> module as same as Benchmark module.
 
     use Benchmarks;
 
