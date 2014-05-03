@@ -17,10 +17,18 @@ sub import {
     $count = !defined($count) ? -1 : $count;
     $style ||= 'auto';
 
-    if ( !ref $ret || ref $ret eq 'CODE' ) {
+    _run_benchmark($count, $ret, $style, $title);
+}
+
+sub _run_benchmark {
+    my ($count, $ret, $style, $title) = @_;
+
+    my $ref_ret = ref $ret;
+
+    if ( !$ref_ret || $ref_ret eq 'CODE' ) {
         Benchmark::timethis($count, $ret, $title || undef, $style);
     }
-    elsif ( ref $ret eq 'HASH' ) {
+    elsif ( $ref_ret eq 'HASH' ) {
         Benchmark::cmpthese($count, $ret, $style);
     }
     else {
