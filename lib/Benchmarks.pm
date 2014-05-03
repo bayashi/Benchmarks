@@ -86,7 +86,9 @@ C<Benchmarks> exports *ALL* functions from C<Benchmark>. You can use C<Benchmark
 
     use Benchmarks;
 
-    timethis (-1, sub { bless +{}, 'Foo' } );
+    warn timestr(
+        countit(1, sub { bless +{}, 'Foo' } )
+    );
 
 More information about functions: L<https://metacpan.org/pod/Benchmark#Standard-Exports> and L<https://metacpan.org/pod/Benchmark#Optional-Exports>
 
