@@ -13,8 +13,8 @@ sub import {
     return unless $code;
     return unless ref $code eq 'CODE';
 
-    my $ret   = $code->();
-    $count = !defined($count) ? -1 : $count;
+    my $ret  = $code->();
+    $count   = !defined($count) ? -1 : $count;
     $style ||= 'auto';
 
     _run_benchmark($count, $ret, $style, $title);
