@@ -20,8 +20,11 @@ sub import {
     if ( !ref $ret || ref $ret eq 'CODE' ) {
         Benchmark::timethis($count, $ret, $title || undef, $style);
     }
-    else {
+    elsif ( ref $ret eq 'HASH' ) {
         Benchmark::cmpthese($count, $ret, $style);
+    }
+    else {
+        die "The CODE returned wrong retval.";
     }
 }
 
