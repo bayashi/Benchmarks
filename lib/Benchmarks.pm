@@ -103,6 +103,14 @@ C<Benchmarks> exports *ALL* functions from C<Benchmark>. You can use C<Benchmark
 
 More information about functions: L<https://metacpan.org/pod/Benchmark#Standard-Exports> and L<https://metacpan.org/pod/Benchmark#Optional-Exports>
 
+=head2 BENCHMARK TEMPLATE
+
+This module includes the `penchmark` command. It's generator of the C<Benchmarks> template.
+
+    $ penchmarks FILE_PATH
+
+Then you can edit the C<FILE_PATH> file.
+
 
 =head1 REPOSITORY
 
