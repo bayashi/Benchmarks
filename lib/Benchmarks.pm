@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Benchmark qw//;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 sub import {
     my ($class, $code, $count, $style, $title) = @_;
