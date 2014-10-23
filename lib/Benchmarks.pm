@@ -1,7 +1,7 @@
 package Benchmarks;
 use strict;
 use warnings;
-use Benchmark qw//;
+use Benchmark qw/:hireswallclock/;
 
 our $VERSION = '0.06';
 
