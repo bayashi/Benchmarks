@@ -2,7 +2,7 @@ package Benchmarks;
 use strict;
 use warnings;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 sub import {
     my ($class, $code, $count, $style, $title) = @_;
