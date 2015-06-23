@@ -144,7 +144,7 @@ You can pass(return) these args at runtime.
 
 =head2 BENCHMARK TEMPLATE
 
-This module includes the L<penchmark> command. It's generator of the C<Benchmarks> template.
+This module includes the L<penchmarks> command. It's generator of the C<Benchmarks> template.
 
     $ penchmarks GENERATE_BENCHMARK_FILE_PATH
 
