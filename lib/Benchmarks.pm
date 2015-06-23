@@ -12,9 +12,16 @@ sub import {
     return unless $code;
     return unless ref $code eq 'CODE';
 
-    my $ret  = $code->();
-    $count   = !defined($count) ? -1 : $count;
-    $style ||= 'auto';
+    my ($ret, $runtime_count, $runtime_style, $runtime_title)  = $code->();
+    $count = defined($runtime_count) ? $runtime_count
+           : defined($count)         ? $count
+           : -1;
+    $style = defined($runtime_style) ? $runtime_style
+           : defined($style)         ? $style
+           : 'auto';
+    $title = defined($runtime_title) ? $runtime_title
+           : defined($title)         ? $title
+           : undef;
 
     _run_benchmark($count, $ret, $style, $title);
 }
@@ -25,7 +32,7 @@ sub _run_benchmark {
     my $ref_ret = ref $ret;
 
     if ( !$ref_ret || $ref_ret eq 'CODE' ) {
-        Benchmark::timethis($count, $ret, $title || undef, $style);
+        Benchmark::timethis($count, $ret, $title, $style);
     }
     elsif ( $ref_ret eq 'HASH' ) {
         Benchmark::cmpthese($count, $ret, $style);
@@ -126,6 +133,13 @@ example STYLE and TITLE:
         my $x = 2;
         sub { $x * $x };
     }, 100, 'all', '2 times';
+
+You can pass(return) these args at runtime.
+
+    use Benchmarks sub {
+        my $x = 2;
+        sub { $x * $x }, 100, 'all', '2 times';
+    };
 
 
 =head2 BENCHMARK TEMPLATE
