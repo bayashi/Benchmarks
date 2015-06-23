@@ -66,7 +66,7 @@ Benchmarks - The comparison benchmarker
 
 B<Benchmarks> is the L<Benchamark> wrapper for comparing routines easily.
 
-When this module was loaded, all you need to do is pass the CODE reference that returns hash reference.
+When this module was loaded, all you need to do is pass the CODE reference that returns the hash reference.
 
     use Benchmarks sub {
         +{
@@ -99,7 +99,7 @@ then the result like this.
 
 =head2 MORE FUNCTIONS
 
-C<Benchmarks> exports *ALL* functions from C<Benchmark>. You can use C<Benchmarks> module as same as Benchmark module.
+C<Benchmarks> exports B<*ALL*> functions from C<Benchmark>. You can use C<Benchmarks> module as same as C<Benchmark> module.
 
     use Benchmarks;
 
@@ -111,7 +111,7 @@ More information about functions: L<https://metacpan.org/pod/Benchmark#Standard-
 
 =head2 BENCHMARKS ARGS
 
-When you use C<Benchmarks>, you can throw few args like below.
+When you use C<Benchmarks>, you can throw several args like below.
 
     use Benchmarks sub {
         # benchmark hash or code.
@@ -144,11 +144,11 @@ You can pass(return) these args at runtime.
 
 =head2 BENCHMARK TEMPLATE
 
-This module includes the `penchmark` command. It's generator of the C<Benchmarks> template.
+This module includes the L<penchmark> command. It's generator of the C<Benchmarks> template.
 
-    $ penchmarks FILE_PATH
+    $ penchmarks GENERATE_BENCHMARK_FILE_PATH
 
-Then you can edit the C<FILE_PATH> file.
+Then you can edit the C<GENERATE_BENCHMARK_FILE_PATH> file and run it.
 
 
 =head1 REPOSITORY
