@@ -1,5 +1,8 @@
 Revision history for Perl extension Benchmarks
 
+0.10    Wed Jun 24 08:13:21 JST 2015
+        - add +x to penchmarks
+
 0.09    Wed Jun 24 08:02:06 JST 2015
         - new feature: runtime args
         - fix POD

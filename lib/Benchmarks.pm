@@ -2,7 +2,7 @@ package Benchmarks;
 use strict;
 use warnings;
 use Benchmark qw/ :hireswallclock /;
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 sub import {
     my ($class, $code, $count, $style, $title) = @_;

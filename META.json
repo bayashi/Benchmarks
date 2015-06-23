@@ -34,7 +34,7 @@
    "provides" : {
       "Benchmarks" : {
          "file" : "lib/Benchmarks.pm",
-         "version" : "0.09"
+         "version" : "0.10"
       }
    },
    "release_status" : "stable",
@@ -53,5 +53,5 @@
          "web" : "http://webchat.freenode.net/?channels=%23bayadev"
       }
    },
-   "version" : "0.09"
+   "version" : "0.10"
 }
