@@ -13,6 +13,9 @@ sub import {
     return unless ref $code eq 'CODE';
 
     my ($ret, $runtime_count, $runtime_style, $runtime_title)  = $code->();
+
+    return if !defined $ret;
+
     $count = defined($runtime_count) ? $runtime_count
            : defined($count)         ? $count
            : -1;
